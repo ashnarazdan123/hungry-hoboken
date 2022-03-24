@@ -28,10 +28,10 @@
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-        
+
         // Get a reference to the database service
         const database = getDatabase(app);
-        
+
         // Read data: Listen for value events (test works!!)
         const restNameRef = ref(database, 'restaurants/Chipotle/name');
         onValue(restNameRef, (snapshot) => {
