@@ -10,8 +10,11 @@ h1 {
     max-height: 300px;
 }
 img.profile {
-  height: 15%;
-  width: 15%;
+  height: 100%;
+  width: 100%;
+}
+p.name {
+  text-align: center;
 }
 
 /* ID selectors */
