@@ -8,6 +8,10 @@ h1 {
     width: auto;
     height: 300px;
     max-height: 300px;
-  }
+}
+img.profile {
+  height: 15%;
+  width: 15%;
+}
 
 /* ID selectors */
