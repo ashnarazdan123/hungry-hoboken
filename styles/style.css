@@ -1,9 +1,20 @@
+/* Element selectors */
 h1 {
     color: #a32638
 }
 
+/* Class selectors */
 .food-size img {
     width: auto;
     height: 300px;
     max-height: 300px;
-  }
+}
+img.profile {
+  height: 100%;
+  width: 100%;
+}
+p.name {
+  text-align: center;
+}
+
+/* ID selectors */
