@@ -16,5 +16,9 @@ img.profile {
 p.name {
   text-align: center;
 }
+button.category {
+  background-color: #a32638;
+  border-color: #a32638;
+}
 
 /* ID selectors */
