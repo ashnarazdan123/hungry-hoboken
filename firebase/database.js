@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-database.js"
+import { equalTo, getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-database.js"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -19,7 +19,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Get a reference to the database service
-const database = getDatabase(app);
+const db = getDatabase(app);
 
 // Read data: Listen for value events (test works!!)
 const restNameRef = ref(database, 'restaurants/Chipotle/name');
@@ -27,3 +27,9 @@ onValue(restNameRef, (snapshot) => {
     const data = snapshot.val();
     console.log(data);
 })
+
+// Search for restaurants of each dietary restriction
+const dairyFreeRests = query(ref(db, 'restaurants'), equalTo('yes', 'dairyFree'), equalTo('partially', 'dairyFree'));
+const glutenFreeRests = query(ref(db, 'restaurants'), equalTo('yes', 'glutenFree'), equalTo('partially', 'glutenFree'));
+const veganRests = query(ref(db, 'restaurants'), equalTo('yes', 'vegan'), equalTo('partially', 'vegan'));
+const vegetatianRests = query(ref(db, 'restaurants'), equalTo('yes', 'vegetarian'), equalTo('partially', 'vegetarian'));
