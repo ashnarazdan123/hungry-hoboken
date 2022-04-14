@@ -22,14 +22,54 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 // Read data: Listen for value events (test works!!)
-const restNameRef = ref(database, 'restaurants/Chipotle/name');
+const restNameRef = ref(db, 'restaurants/Chipotle/name');
 onValue(restNameRef, (snapshot) => {
     const data = snapshot.val();
     console.log(data);
 })
 
 // Search for restaurants of each dietary restriction
-const dairyFreeRests = query(ref(db, 'restaurants'), equalTo('yes', 'dairyFree'), equalTo('partially', 'dairyFree'));
-const glutenFreeRests = query(ref(db, 'restaurants'), equalTo('yes', 'glutenFree'), equalTo('partially', 'glutenFree'));
-const veganRests = query(ref(db, 'restaurants'), equalTo('yes', 'vegan'), equalTo('partially', 'vegan'));
-const vegetatianRests = query(ref(db, 'restaurants'), equalTo('yes', 'vegetarian'), equalTo('partially', 'vegetarian'));
+// const allRestsRef = query(ref(db, 'restaurants'));
+// const dairyFreeRestsRef = query(ref(db, 'restaurants'), equalTo('yes', 'dairyFree'), equalTo('partially', 'dairyFree'));
+// const glutenFreeRestsRef = query(ref(db, 'restaurants'), equalTo('yes', 'glutenFree'), equalTo('partially', 'glutenFree'));
+// const veganRestsRef = query(ref(db, 'restaurants'), equalTo('yes', 'vegan'), equalTo('partially', 'vegan'));
+// const vegetarianRestsRef = query(ref(db, 'restaurants'), equalTo('yes', 'vegetarian'), equalTo('partially', 'vegetarian'));
+
+function test() {
+    return 'hi';
+}
+
+// var container = document.getElementById('searchResult');
+
+// function AddItemToTable(name) {
+//     let _row = document.createElement('div', {class: 'row'});
+//     let _name = document.createElement('p');
+//     let _hr = document.createElement('hr');
+
+//     _name.innerHTML = name;
+
+//     _row.appendChild(_name);
+//     _row.appendChild(_hr);
+
+//     container.appendChild(_row);
+// }
+
+// function AddAllItemsToTable(restaurant) {
+//     container.innerHTML = "";
+//     restaurant.forEach(element => {
+//         AddItemToTable(element.name);
+//     });
+// }
+
+// function GetAllDataOnce() {
+//     const dbRef = ref(db);
+
+//     get(child(dbRef, 'restaurants')).then((snapshot) => {
+//         var restaurants = [];
+//         snapshot.forEach(childSnapshot => {
+//             restaurants.push(childSnapshot.val());
+//         });
+
+//         AddAllItemsToTable(restaurants);
+//     });
+// }

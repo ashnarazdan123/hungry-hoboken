@@ -13,6 +13,10 @@ img.profile {
   height: 100%;
   width: 100%;
 }
+img.logo {
+  height: 25%;
+  width: 25%;
+}
 p.name {
   text-align: center;
 }

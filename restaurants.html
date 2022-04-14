@@ -60,27 +60,46 @@
         <main id="main" role="main">
             <div class="jumbotron my-5">
                 <div class="container">
-                    <h1 class="display-3">Restaurants</h1>
+                    <h1 class="display-3">Find Restaurants</h1>
                 </div>
             </div>
 
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col">
-                        <button type="button" class="btn btn-primary category" data-bs-toggle="button" autocomplete="off">Gluten Free</button>
+                        <button type="button" class="btn btn-primary category" onclick="document.getElementById('searchResult').innerHTML = test()">Gluten Free</button>
                     </div>
                     <div class="col">
-                        <button type="button" class="btn btn-primary category" data-bs-toggle="button" autocomplete="off">Vegan</button>
+                        <button type="button" class="btn btn-primary category">Vegan</button>
                     </div>
                     <div class="col">
-                        <button type="button" class="btn btn-primary category" data-bs-toggle="button" autocomplete="off">Vegetarian</button>
+                        <button type="button" class="btn btn-primary category">Vegetarian</button>
                     </div>
                     <div class="col">
-                        <button type="button" class="btn btn-primary category" data-bs-toggle="button" autocomplete="off">Diary Free</button>
+                        <button type="button" class="btn btn-primary category">Dairy Free</button>
                     </div>
                 </div>
+                <hr>
+            </div>
+
+            <div class="container" id="searchResult">
+                <div class="row">
+                    <img class="logo" src="https://images.squarespace-cdn.com/content/v1/58c6bceff7e0ab656619b21f/1502830047615-ILX5V053N1N0HT4D236L/Asset+1%404x.png?format=750w">
+                    <p>Acai Ya Later</p>
+                </div>
+                <hr>
+                <div class="row">
+                    <img class="logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Chipotle_Mexican_Grill_logo.svg/1200px-Chipotle_Mexican_Grill_logo.svg.png">
+                    <p>Chipotle</p>
+                </div>
+                <hr>
+                <div class="row">
+                    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/McDonald%27s_SVG_logo.svg/3000px-McDonald%27s_SVG_logo.svg.png">
+                    <p>McDonald's</p>
+                </div>
+                <hr>
             </div>
         </main>
-    <script src="firebase/database.js"></script>
+    <script type="module" src="firebase/database.js"></script>
     </body>
 </html>
