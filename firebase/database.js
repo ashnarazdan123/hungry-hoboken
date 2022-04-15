@@ -29,15 +29,24 @@ onValue(restNameRef, (snapshot) => {
 })
 
 // Search for restaurants of each dietary restriction
-// const allRestsRef = query(ref(db, 'restaurants'));
-// const dairyFreeRestsRef = query(ref(db, 'restaurants'), equalTo('yes', 'dairyFree'), equalTo('partially', 'dairyFree'));
-// const glutenFreeRestsRef = query(ref(db, 'restaurants'), equalTo('yes', 'glutenFree'), equalTo('partially', 'glutenFree'));
-// const veganRestsRef = query(ref(db, 'restaurants'), equalTo('yes', 'vegan'), equalTo('partially', 'vegan'));
-// const vegetarianRestsRef = query(ref(db, 'restaurants'), equalTo('yes', 'vegetarian'), equalTo('partially', 'vegetarian'));
+export const allRestsRef = query(ref(db, 'restaurants'));
+const dairyFreeRestsRef = query(ref(db, 'restaurants'), equalTo('yes', 'dairyFree'), equalTo('partially', 'dairyFree'));
+const glutenFreeRestsRef = query(ref(db, 'restaurants'), equalTo('yes', 'glutenFree'), equalTo('partially', 'glutenFree'));
+const veganRestsRef = query(ref(db, 'restaurants'), equalTo('yes', 'vegan'), equalTo('partially', 'vegan'));
+const vegetarianRestsRef = query(ref(db, 'restaurants'), equalTo('yes', 'vegetarian'), equalTo('partially', 'vegetarian'));
 
-function test() {
-    return 'hi';
-}
+// Test export to test.js
+export const idk = 'idk';
+
+// function test() {
+//     console.log("hewwo");
+//     return 'hi';
+// }
+
+// let testidbutton = document.getElementById("testid");
+
+// testidbutton.addEventListener("click", test);
+// console.log("this script ran. woohoo!");
 
 // var container = document.getElementById('searchResult');
 

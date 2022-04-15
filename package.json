@@ -1,4 +1,5 @@
 {
+  "type":"module",
   "dependencies": {
     "firebase": "^9.6.9"
   }

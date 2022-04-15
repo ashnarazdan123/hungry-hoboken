@@ -27,6 +27,7 @@
     </head>
 
     <body>
+        
         <div class="loader"></div>
         <header id="header">
             <nav class="navbar navbar-expand-md navbar-dark fixed-top style=" style="background-color: #8C1900;">
@@ -67,7 +68,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col">
-                        <button type="button" class="btn btn-primary category" onclick="document.getElementById('searchResult').innerHTML = test()">Gluten Free</button>
+                        <button type="button" id="testid" class="btn btn-primary category">Gluten Free</button>
                     </div>
                     <div class="col">
                         <button type="button" class="btn btn-primary category">Vegan</button>
@@ -100,6 +101,7 @@
                 <hr>
             </div>
         </main>
-    <script type="module" src="firebase/database.js"></script>
+        <!-- <script src="firebase/database.js" type="module"></script> -->
+        <script src="test.js"></script>
     </body>
 </html>
