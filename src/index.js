@@ -28,14 +28,10 @@ onValue(restNameRef, (snapshot) => {
     console.log(data);
 })
 
-// Test function for exports
+// Test button for exports
 var testbutton = document.getElementById("testbut");
 if (testbutton) {
     testbutton.addEventListener("click", function() {
         console.log('test!');
     }, false);
-}
-
-export function test() {
-    console.log('test');
 }
