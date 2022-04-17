@@ -35,3 +35,31 @@ if (testbutton) {
         console.log('test!');
     }, false);
 }
+
+// Test function using Firebase
+const allRestaurantsRef = ref(db, 'restaurants');
+// const glutenFreeRestaurantsRef = query(ref(db, 'restaurants'), equalTo('yes', 'glutenFree'), equalTo('partially', 'glutenFree'));
+
+onValue(allRestaurantsRef, (snapshot) => {
+    snapshot.forEach((childSnapshot) => {
+        // const childKey = childSnapshot.key;
+        // const childData = childSnapshot.data;
+        console.log(childSnapshot.key);
+    });
+}, {
+    onlyOnce: true
+});
+
+var glutenFreeButton = document.getElementById("glutenFree");
+if (glutenFreeButton) {
+    glutenFreeButton.addEventListener("click", function() {
+        console.log(allRestaurantsRef);
+    }, false);
+}
+
+// var glutenFreeButton = document.getElementById("glutenFree");
+// if (glutenFreeButton) {
+//     glutenFreeButton.addEventListener("click", function() {
+//         console.log(glutenFreeRestaurantsRef);
+//     }, false);
+// }
