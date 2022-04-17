@@ -75,11 +75,11 @@ function listRestaurants2(ref) {
         snapshot.forEach((childSnapshot) => {
             console.log(childSnapshot.key);
 
-            const _div = document.createElement("div", {class: 'row'});
-            // const _img = document.createElement("img", {class: 'logo', src: `https://upload.wikimedia.org/wikipedia/commons/a/a1/Mallard2.jpg`});
+            const _div = document.createElement("div");
+            _div.className = 'row';
             const _img = document.createElement('img');
+            _img.className = 'logo';
             _img.src = 'https://upload.wikimedia.org/wikipedia/commons/a/a1/Mallard2.jpg';
-            _img.class = 'logo';
             const _name = document.createElement("p");
             _name.innerHTML = childSnapshot.key;
             const _hr = document.createElement("hr");
