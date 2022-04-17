@@ -24,6 +24,8 @@
         <!--[if lt IE 9]>
         <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie8.min.css" rel="stylesheet">
         <![endif]-->
+
+        <script type="module" src="/src/index.js"></script>
     </head>
 
     <body>
@@ -71,10 +73,10 @@
                         <button type="button" id="testid" class="btn btn-primary category">Gluten Free</button>
                     </div>
                     <div class="col">
-                        <button type="button" class="btn btn-primary category">Vegan</button>
+                        <button type="button" class="btn btn-primary category" onclick="test()">Vegan</button>
                     </div>
                     <div class="col">
-                        <button type="button" class="btn btn-primary category">Vegetarian</button>
+                        <button type="button" id="testbut" class="btn btn-primary category">Vegetarian</button>
                     </div>
                     <div class="col">
                         <button type="button" class="btn btn-primary category">Dairy Free</button>
@@ -102,6 +104,6 @@
             </div>
         </main>
         <!-- <script src="firebase/database.js" type="module"></script> -->
-        <script src="test.js"></script>
+        <!-- <script src="test.js"></script> -->
     </body>
 </html>
