@@ -21,9 +21,19 @@ button.category {
   border-color: #a32638;
 }
 /* Restaurant listing */
+div.logoDiv {
+  background-color:grey;
+  border-radius: 10px;
+  display: flex;
+  /* align-self: center; */
+}
 img.logo {
-  height: 100%;
-  width: 100%;
+  height: 90%;
+  width: 90%;
+  margin: auto;
+  display: block;
+  border-radius: 10px;
+  /* align-content: center; */
 }
 p.restName {
   font-size: 50px;

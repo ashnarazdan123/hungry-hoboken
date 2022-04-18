@@ -42,7 +42,7 @@ function listRestaurants(ref, restriction) {
 
             // Create first column that contains logo
             const _colOne = document.createElement('div');
-            _colOne.className = 'col-4';
+            _colOne.className = 'col-4 logoDiv';
             const _img = document.createElement('img');
             _img.className = 'logo';
 
