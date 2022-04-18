@@ -31,6 +31,9 @@ const allRestaurantsRef = ref(db, 'restaurants');
 function listRestaurants(ref, restriction) {
     // Clear the current list of restaurants
     document.getElementById("searchResult").innerHTML = '';
+
+    // Display user-selected dietary restriction
+
     // Look at the given reference
     onValue(ref, (snapshot) => {
         // Look through all restaurants in the given reference
@@ -55,6 +58,8 @@ function listRestaurants(ref, restriction) {
             _address.className = 'category';
             const _category = document.createElement('p');
             _category.className = 'category';
+
+            // Create second row that contains dietary restrictions
 
             // Create third column that contains website link
             const _colThree = document.createElement('div');
@@ -111,6 +116,7 @@ function listRestaurants(ref, restriction) {
     })
 }
 
+// Create 4 listeners (1 for each dietary restriction) linked to buttons on Find Restaurants page
 var glutenFreeButton = document.getElementById('glutenFree');
 if (glutenFreeButton) {
     glutenFreeButton.addEventListener('click', function() {
@@ -118,7 +124,6 @@ if (glutenFreeButton) {
     }, false);
 }
 
-// Test function: load all restaurant data when Vegan button pressed
 var veganButton = document.getElementById('vegan');
 if (veganButton) {
     veganButton.addEventListener('click', function() {
