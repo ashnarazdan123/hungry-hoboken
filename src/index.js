@@ -144,3 +144,6 @@ if (dairyFreeButton) {
         listRestaurants(allRestaurantsRef, 'dairyFree');
     }, false);
 }
+
+// Display list of all restaurants when user opens Find Restaurants page
+listRestaurants(allRestaurantsRef);
