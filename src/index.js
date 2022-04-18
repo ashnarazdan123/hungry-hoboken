@@ -21,54 +21,11 @@ const app = initializeApp(firebaseConfig);
 // Get a reference to the database service
 const db = getDatabase(app);
 
-// Read data: Listen for value events (test works!!)
-const restNameRef = ref(db, 'restaurants/Chipotle/name');
-onValue(restNameRef, (snapshot) => {
-    const data = snapshot.val();
-    console.log(data);
-})
-
-// Test button for exports
-var testbutton = document.getElementById("testbut");
-if (testbutton) {
-    testbutton.addEventListener("click", function() {
-        console.log('test!');
-    }, false);
-}
-
 // References to restaurants conforming to each dietary restriction
 const allRestaurantsRef = ref(db, 'restaurants');
 // const glutenFreeRestaurantsRef = query(ref(db, 'restaurants'), equalTo('yes', 'glutenFree'), equalTo('partially', 'glutenFree'));
 
 // General function to load restaurant data given a reference
-function listRestaurants1(ref) {
-    console.log("inside listRestaurants");
-    var totalList = ``;
-    onValue(ref, (snapshot) => {
-        console.log("inside onValue");
-        snapshot.forEach((childSnapshot) => {
-            console.log("inside snapshot.forEach");
-            totalList += `<div class="row">`;
-            childSnapshot.forEach((grandchildSnapshot) => {
-                console.log("inside childSnapshot.forEach");
-                if (grandchildSnapshot.key === 'imageURL') {
-                    console.log("inside if imageURL");
-                    totalList += `<img class="logo" src="${grandchildSnapshot.data}">`;
-                } else if (grandchildSnapshot.key === 'name') {
-                    console.log("inside if name");
-                    totalList += `<p>Name:${childSnapshot.data}</p>`;
-                }
-            });
-            totalList += `</div>`;
-            totalList += `<hr>`;
-        });
-    }, {
-        onlyOnce: true
-    });
-    return totalList;
-}
-
-// 2nd attempt at loading restaurant data given a reference
 function listRestaurants(ref) {
     document.getElementById("searchResult").innerHTML = '';
     onValue(ref, (snapshot) => {
@@ -147,29 +104,3 @@ if (veganButton) {
         listRestaurants(allRestaurantsRef);
     }, false);
 }
-
-// Test function: logs all restaurant names
-// onValue(allRestaurantsRef, (snapshot) => {
-//     snapshot.forEach((childSnapshot) => {
-//         // const childKey = childSnapshot.key;
-//         // const childData = childSnapshot.data;
-//         console.log(childSnapshot.key);
-//     });
-// }, {
-//     onlyOnce: true
-// });
-
-// Test function: log all restaurants reference when Gluten Free button pressed
-var glutenFreeButton = document.getElementById("glutenFree");
-if (glutenFreeButton) {
-    glutenFreeButton.addEventListener("click", function() {
-        console.log(allRestaurantsRef);
-    }, false);
-}
-
-// var glutenFreeButton = document.getElementById("glutenFree");
-// if (glutenFreeButton) {
-//     glutenFreeButton.addEventListener("click", function() {
-//         console.log(glutenFreeRestaurantsRef);
-//     }, false);
-// }
