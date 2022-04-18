@@ -25,16 +25,16 @@ const db = getDatabase(app);
 const allRestaurantsRef = ref(db, 'restaurants');
 // const glutenFreeRestaurantsRef = query(ref(db, 'restaurants'), equalTo('yes', 'glutenFree'), equalTo('partially', 'glutenFree'));
 // const dairyFreeRestaurantsRef = query(ref(db, 'restaurants'), equalTo('yes', 'dairyFree'), equalTo('partially', 'dairyFree'));
-const dairyFreeRestaurantsRef = query(ref(db, 'restaurants'), equalTo('yes', 'dairyFree'));
+// const dairyFreeRestaurantsRef = query(ref(db, 'restaurants'), equalTo('yes', 'dairyFree'));
 
 // General function to load restaurant data given a reference
-function listRestaurants(ref) {
-    console.log('inside listRestaurants');
+function listRestaurants(ref, restriction) {
+    // Clear the current list of restaurants
     document.getElementById("searchResult").innerHTML = '';
+    // Look at the given reference
     onValue(ref, (snapshot) => {
-        console.log('inside onValue');
+        // Look through all restaurants in the given reference
         snapshot.forEach((childSnapshot) => {
-            console.log('inside snapshot');
             // Create all elements of a restaurant listing
             // Create (first) row that contains all other elements
             const _rowOne = document.createElement('div');
@@ -67,9 +67,16 @@ function listRestaurants(ref) {
             // Create horizontal rule
             const _hr = document.createElement("hr");
 
-            // Check Firebase data to set each element
+            var satisfiesRestriction = true;
+            // Look through all the data fields in each restaurant
             childSnapshot.forEach((grandchildSnapshot) => {
-                if (grandchildSnapshot.key == 'imageURL') {
+                // Check if restaurant satisfies the given dietary restriction
+                if (grandchildSnapshot.key == restriction) {
+                    if (grandchildSnapshot.val() == 'no') {
+                        satisfiesRestriction = false;
+                    }
+                // Set required fields for each of the other components
+                } else if (grandchildSnapshot.key == 'imageURL') {
                     _img.src = grandchildSnapshot.val();
                 } else if (grandchildSnapshot.key == 'name') {
                     _name.innerHTML = grandchildSnapshot.val();
@@ -82,36 +89,53 @@ function listRestaurants(ref) {
                 }
             })
             
-            // Add each element to their respective column
-            _colOne.appendChild(_img);
-            _colTwo.appendChild(_name);
-            _colTwo.appendChild(_address);
-            _colTwo.appendChild(_category);
-            _colThree.appendChild(_website);
+            // Only add restaurant to list if it satisfies the given dietary restriction
+            if (satisfiesRestriction) {
+                // Add each element to their respective column
+                _colOne.appendChild(_img);
+                _colTwo.appendChild(_name);
+                _colTwo.appendChild(_address);
+                _colTwo.appendChild(_category);
+                _colThree.appendChild(_website);
 
-            // Add each of the three columns to the (first) row
-            _rowOne.appendChild(_colOne);
-            _rowOne.appendChild(_colTwo);
-            _rowOne.appendChild(_colThree);
+                // Add each of the three columns to the (first) row
+                _rowOne.appendChild(_colOne);
+                _rowOne.appendChild(_colTwo);
+                _rowOne.appendChild(_colThree);
 
-            // Add restaurant listing and horizontal rule to Find Restaurants page
-            document.getElementById("searchResult").appendChild(_rowOne);
-            document.getElementById("searchResult").appendChild(_hr);
+                // Add restaurant listing and horizontal rule to Find Restaurants page
+                document.getElementById("searchResult").appendChild(_rowOne);
+                document.getElementById("searchResult").appendChild(_hr);
+            }
         })
     })
 }
 
-// Test function: load all restaurant data when Vegan button pressed
-var veganButton = document.getElementById("vegan");
-if (veganButton) {
-    veganButton.addEventListener("click", function() {
-        listRestaurants(allRestaurantsRef);
+var glutenFreeButton = document.getElementById('glutenFree');
+if (glutenFreeButton) {
+    glutenFreeButton.addEventListener('click', function() {
+        listRestaurants(allRestaurantsRef, 'glutenFree');
     }, false);
 }
 
-var dairyFreeButton = document.getElementById("dairyFree");
+// Test function: load all restaurant data when Vegan button pressed
+var veganButton = document.getElementById('vegan');
+if (veganButton) {
+    veganButton.addEventListener('click', function() {
+        listRestaurants(allRestaurantsRef, 'vegan');
+    }, false);
+}
+
+var vegetarianButton = document.getElementById('vegetarian');
+if (vegetarianButton) {
+    vegetarianButton.addEventListener('click', function() {
+        listRestaurants(allRestaurantsRef, 'vegetarian');
+    }, false);
+}
+
+var dairyFreeButton = document.getElementById('dairyFree');
 if (dairyFreeButton) {
-    dairyFreeButton.addEventListener("click", function() {
-        listRestaurants(dairyFreeRestaurantsRef);
+    dairyFreeButton.addEventListener('click', function() {
+        listRestaurants(allRestaurantsRef, 'dairyFree');
     }, false);
 }
