@@ -69,21 +69,27 @@ function listRestaurants1(ref) {
 }
 
 // 2nd attempt at loading restaurant data given a reference
+//blue da ba de da ba daa da ba dee da ba daa
 function listRestaurants(ref) {
     document.getElementById("searchResult").innerHTML = '';
     onValue(ref, (snapshot) => {
         snapshot.forEach((childSnapshot) => {
-            console.log(childSnapshot.key);
-
             // Create all elements of a restaurant listing
             const _div = document.createElement("div");
             _div.className = 'row';
             const _img = document.createElement('img');
             _img.className = 'logo';
-            _img.src = 'https://upload.wikimedia.org/wikipedia/commons/a/a1/Mallard2.jpg'; // Change to imageURL from Firebase
             const _name = document.createElement("p");
-            _name.innerHTML = childSnapshot.key; // Change to name from Firebase
             const _hr = document.createElement("hr");
+
+            // Check restaurant data to set imageURL and name
+            childSnapshot.forEach((grandchildSnapshot) => {
+                if (grandchildSnapshot.key == 'imageURL') {
+                    _img.src = grandchildSnapshot.val();
+                } else if (grandchildSnapshot.key == 'name') {
+                    _name.innerHTML = grandchildSnapshot.val();
+                }
+            })
             
             // Add image and name to div (combine elements of restaurant listing)
             _div.appendChild(_img);
