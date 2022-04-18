@@ -74,14 +74,17 @@ function listRestaurants(ref) {
     onValue(ref, (snapshot) => {
         snapshot.forEach((childSnapshot) => {
             // Create all elements of a restaurant listing
+            // Create (first) row that contains all other elements
             const _rowOne = document.createElement('div');
             _rowOne.className = 'row';
 
+            // Create first column that contains logo
             const _colOne = document.createElement('div');
             _colOne.className = 'col-4';
             const _img = document.createElement('img');
             _img.className = 'logo';
 
+            // Create second column that contains name, address, and category
             const _colTwo = document.createElement('div');
             _colTwo.className = 'col';
             const _name = document.createElement('p');
@@ -91,6 +94,7 @@ function listRestaurants(ref) {
             const _category = document.createElement('p');
             _category.className = 'category';
 
+            // Create third column that contains website link
             const _colThree = document.createElement('div');
             _colThree.className = 'col-2';
             const _website = document.createElement('a');
@@ -98,9 +102,10 @@ function listRestaurants(ref) {
             _website.className = 'btn btn-info';
             _website.innerHTML = 'Website';
 
+            // Create horizontal rule
             const _hr = document.createElement("hr");
 
-            // Check restaurant data to set imageURL and name
+            // Check Firebase data to set each element
             childSnapshot.forEach((grandchildSnapshot) => {
                 if (grandchildSnapshot.key == 'imageURL') {
                     _img.src = grandchildSnapshot.val();
@@ -115,13 +120,14 @@ function listRestaurants(ref) {
                 }
             })
             
-            // Add image and name to div (combine elements of restaurant listing)
+            // Add each element to their respective column
             _colOne.appendChild(_img);
             _colTwo.appendChild(_name);
             _colTwo.appendChild(_address);
             _colTwo.appendChild(_category);
             _colThree.appendChild(_website);
 
+            // Add each of the three columns to the (first) row
             _rowOne.appendChild(_colOne);
             _rowOne.appendChild(_colTwo);
             _rowOne.appendChild(_colThree);
