@@ -69,7 +69,6 @@ function listRestaurants1(ref) {
 }
 
 // 2nd attempt at loading restaurant data given a reference
-//blue da ba de da ba daa da ba dee da ba daa
 function listRestaurants(ref) {
     document.getElementById("searchResult").innerHTML = '';
     onValue(ref, (snapshot) => {
