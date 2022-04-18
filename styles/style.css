@@ -13,16 +13,35 @@ img.profile {
   height: 100%;
   width: 100%;
 }
-img.logo {
-  height: 25%;
-  width: 25%;
-}
 p.name {
   text-align: center;
 }
 button.category {
   background-color: #a32638;
   border-color: #a32638;
+}
+/* Restaurant listing */
+img.logo {
+  height: 100%;
+  width: 100%;
+}
+p.restName {
+  font-size: 50px;
+}
+p.category {
+  font-size: 20px;
+  color: gray;
+}
+img.ratingImg {
+  /* height: 100%; */
+  width: 130%;
+}
+p.rating {
+  font-size: 35px;
+}
+p.price {
+  font-size: 35px;
+  color: green;
 }
 
 /* ID selectors */
