@@ -178,28 +178,28 @@ function listRestaurants(ref, restriction) {
 }
 
 // Create 4 listeners (1 for each dietary restriction) linked to buttons on Find Restaurants page
-var glutenFreeButton = document.getElementById('glutenFree');
+var glutenFreeButton = document.getElementById('glutenFreeButton');
 if (glutenFreeButton) {
     glutenFreeButton.addEventListener('click', function() {
         listRestaurants(allRestaurantsRef, 'glutenFree');
     }, false);
 }
 
-var veganButton = document.getElementById('vegan');
+var veganButton = document.getElementById('veganButton');
 if (veganButton) {
     veganButton.addEventListener('click', function() {
         listRestaurants(allRestaurantsRef, 'vegan');
     }, false);
 }
 
-var vegetarianButton = document.getElementById('vegetarian');
+var vegetarianButton = document.getElementById('vegetarianButton');
 if (vegetarianButton) {
     vegetarianButton.addEventListener('click', function() {
         listRestaurants(allRestaurantsRef, 'vegetarian');
     }, false);
 }
 
-var dairyFreeButton = document.getElementById('dairyFree');
+var dairyFreeButton = document.getElementById('dairyFreeButton');
 if (dairyFreeButton) {
     dairyFreeButton.addEventListener('click', function() {
         listRestaurants(allRestaurantsRef, 'dairyFree');
