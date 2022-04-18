@@ -21,11 +21,8 @@ const app = initializeApp(firebaseConfig);
 // Get a reference to the database service
 const db = getDatabase(app);
 
-// References to restaurants conforming to each dietary restriction
+// Reference to all restaurants
 const allRestaurantsRef = ref(db, 'restaurants');
-// const glutenFreeRestaurantsRef = query(ref(db, 'restaurants'), equalTo('yes', 'glutenFree'), equalTo('partially', 'glutenFree'));
-// const dairyFreeRestaurantsRef = query(ref(db, 'restaurants'), equalTo('yes', 'dairyFree'), equalTo('partially', 'dairyFree'));
-// const dairyFreeRestaurantsRef = query(ref(db, 'restaurants'), equalTo('yes', 'dairyFree'));
 
 // General function to load restaurant data given a reference
 function listRestaurants(ref, restriction) {
