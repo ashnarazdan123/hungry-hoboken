@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { equalTo, getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-database.js"
+import { equalTo, getDatabase, query, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-database.js"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -24,6 +24,7 @@ const db = getDatabase(app);
 // References to restaurants conforming to each dietary restriction
 const allRestaurantsRef = ref(db, 'restaurants');
 // const glutenFreeRestaurantsRef = query(ref(db, 'restaurants'), equalTo('yes', 'glutenFree'), equalTo('partially', 'glutenFree'));
+// const dairyFreeRestaurantsRef = query(ref(db, 'restaurants'), equalTo('yes', 'dairyFree'), equalTo('partially', 'dairyFree'));
 
 // General function to load restaurant data given a reference
 function listRestaurants(ref) {
@@ -100,7 +101,13 @@ function listRestaurants(ref) {
 var veganButton = document.getElementById("vegan");
 if (veganButton) {
     veganButton.addEventListener("click", function() {
-        // document.getElementById("searchResult").innerHTML = listRestaurants(allRestaurantsRef);
         listRestaurants(allRestaurantsRef);
+    }, false);
+}
+
+var dairyFreeButton = document.getElementById("dairyFree");
+if (dairyFreeButton) {
+    dairyFreeButton.addEventListener("click", function() {
+        listRestaurants(dairyFreeRestaurantsRef);
     }, false);
 }
