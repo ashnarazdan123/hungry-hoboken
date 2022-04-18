@@ -53,5 +53,23 @@ p.price {
   font-size: 35px;
   color: green;
 }
+p.yes {
+  color: white;
+  background-color: green;
+  text-align: center;
+  border-radius: 5px;
+}
+p.partially {
+  color: white;
+  background-color: orange;
+  text-align: center;
+  border-radius: 5px;
+}
+p.no {
+  color: white;
+  background-color: red;
+  text-align: center;
+  border-radius: 5px;
+}
 
 /* ID selectors */

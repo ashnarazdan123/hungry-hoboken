@@ -77,6 +77,28 @@ function listRestaurants(ref, restriction) {
             _category.className = 'category';
 
             // Create second row that contains dietary restrictions
+            const _rowTwo = document.createElement('div');
+            _rowTwo.className = 'row';
+
+            // Create columns 4-7 that contain each dierary restriction
+            const _colFour = document.createElement('div');
+            _colFour.className = 'col';
+            const _colFive = document.createElement('div');
+            _colFive.className = 'col';
+            const _colSix = document.createElement('div');
+            _colSix.className = 'col';
+            const _colSeven = document.createElement('div');
+            _colSeven.className = 'col';
+
+            // Create 4 paragraph tags to display each dietary restriction
+            const _glutenFree = document.createElement('p');
+            _glutenFree.innerHTML = 'Gluten Free';
+            const _vegan = document.createElement('p');
+            _vegan.innerHTML = 'Vegan';
+            const _vegetarian = document.createElement('p');
+            _vegetarian.innerHTML = 'Vegetarian';
+            const _dairyFree = document.createElement('p');
+            _dairyFree.innerHTML = 'Dairy Free';
 
             // Create third column that contains website link
             const _colThree = document.createElement('div');
@@ -98,7 +120,8 @@ function listRestaurants(ref, restriction) {
                         satisfiesRestriction = false;
                     }
                 // Set required fields for each of the other components
-                } else if (grandchildSnapshot.key == 'imageURL') {
+                }
+                if (grandchildSnapshot.key == 'imageURL') {
                     _img.src = grandchildSnapshot.val();
                 } else if (grandchildSnapshot.key == 'name') {
                     _name.innerHTML = grandchildSnapshot.val();
@@ -108,6 +131,14 @@ function listRestaurants(ref, restriction) {
                     _category.innerHTML = grandchildSnapshot.val();
                 } else if (grandchildSnapshot.key == 'websiteURL') {
                     _website.href = grandchildSnapshot.val();
+                } else if (grandchildSnapshot.key == 'glutenFree') {
+                    _glutenFree.className = grandchildSnapshot.val();
+                } else if (grandchildSnapshot.key == 'vegan') {
+                    _vegan.className = grandchildSnapshot.val();
+                } else if (grandchildSnapshot.key == 'vegetarian') {
+                    _vegetarian.className = grandchildSnapshot.val();
+                } else if (grandchildSnapshot.key == 'dairyFree') {
+                    _dairyFree.className = grandchildSnapshot.val();
                 }
             })
             
@@ -116,9 +147,22 @@ function listRestaurants(ref, restriction) {
                 // Add each element to their respective column
                 _colOne.appendChild(_img);
                 _colTwo.appendChild(_name);
-                _colTwo.appendChild(_address);
                 _colTwo.appendChild(_category);
+                _colTwo.appendChild(_address);
+                _colTwo.appendChild(_rowTwo);
                 _colThree.appendChild(_website);
+
+                // Add each of the category columns to the second row
+                _rowTwo.appendChild(_colFour);
+                _rowTwo.appendChild(_colFive);
+                _rowTwo.appendChild(_colSix);
+                _rowTwo.appendChild(_colSeven);
+
+                // Add each of the category p's to their resepective column
+                _colFour.appendChild(_glutenFree);
+                _colFive.appendChild(_vegan);
+                _colSix.appendChild(_vegetarian);
+                _colSeven.appendChild(_dairyFree);
 
                 // Add each of the three columns to the (first) row
                 _rowOne.appendChild(_colOne);
