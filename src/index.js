@@ -74,11 +74,30 @@ function listRestaurants(ref) {
     onValue(ref, (snapshot) => {
         snapshot.forEach((childSnapshot) => {
             // Create all elements of a restaurant listing
-            const _div = document.createElement("div");
-            _div.className = 'row';
+            const _rowOne = document.createElement('div');
+            _rowOne.className = 'row';
+
+            const _colOne = document.createElement('div');
+            _colOne.className = 'col-4';
             const _img = document.createElement('img');
             _img.className = 'logo';
-            const _name = document.createElement("p");
+
+            const _colTwo = document.createElement('div');
+            _colTwo.className = 'col';
+            const _name = document.createElement('p');
+            _name.className = 'restName';
+            const _address = document.createElement('p');
+            _address.className = 'category';
+            const _category = document.createElement('p');
+            _category.className = 'category';
+
+            const _colThree = document.createElement('div');
+            _colThree.className = 'col-2';
+            const _website = document.createElement('a');
+            _website.role = 'button';
+            _website.className = 'btn btn-info';
+            _website.innerHTML = 'Website';
+
             const _hr = document.createElement("hr");
 
             // Check restaurant data to set imageURL and name
@@ -87,15 +106,28 @@ function listRestaurants(ref) {
                     _img.src = grandchildSnapshot.val();
                 } else if (grandchildSnapshot.key == 'name') {
                     _name.innerHTML = grandchildSnapshot.val();
+                } else if (grandchildSnapshot.key == 'address') {
+                    _address.innerHTML = grandchildSnapshot.val();
+                } else if (grandchildSnapshot.key == 'category') {
+                    _category.innerHTML = grandchildSnapshot.val();
+                } else if (grandchildSnapshot.key == 'websiteURL') {
+                    _website.href = grandchildSnapshot.val();
                 }
             })
             
             // Add image and name to div (combine elements of restaurant listing)
-            _div.appendChild(_img);
-            _div.appendChild(_name);
+            _colOne.appendChild(_img);
+            _colTwo.appendChild(_name);
+            _colTwo.appendChild(_address);
+            _colTwo.appendChild(_category);
+            _colThree.appendChild(_website);
+
+            _rowOne.appendChild(_colOne);
+            _rowOne.appendChild(_colTwo);
+            _rowOne.appendChild(_colThree);
 
             // Add restaurant listing and horizontal rule to Find Restaurants page
-            document.getElementById("searchResult").appendChild(_div);
+            document.getElementById("searchResult").appendChild(_rowOne);
             document.getElementById("searchResult").appendChild(_hr);
         })
     })
