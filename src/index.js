@@ -33,6 +33,23 @@ function listRestaurants(ref, restriction) {
     document.getElementById("searchResult").innerHTML = '';
 
     // Display user-selected dietary restriction
+    const _title = document.createElement('h1');
+    if (restriction) {
+        if (restriction == 'glutenFree') {
+            _title.innerHTML = 'Gluten Free Restaurants';
+        } else if (restriction == 'vegan') {
+            _title.innerHTML = 'Vegan Restaurants';
+        } else if (restriction == 'vegetarian') {
+            _title.innerHTML = 'Vegetarian Restaurants';
+        } else if (restriction == 'dairyFree') {
+            _title.innerHTML = 'Dairy Free Restaurants';
+        }
+    } else {
+        _title.innerHTML = 'All Restaurants';
+    }
+    const _hrule = document.createElement('hr');
+    document.getElementById('searchResult').appendChild(_title);
+    document.getElementById('searchResult').appendChild(_hrule);
 
     // Look at the given reference
     onValue(ref, (snapshot) => {
