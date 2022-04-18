@@ -25,12 +25,16 @@ const db = getDatabase(app);
 const allRestaurantsRef = ref(db, 'restaurants');
 // const glutenFreeRestaurantsRef = query(ref(db, 'restaurants'), equalTo('yes', 'glutenFree'), equalTo('partially', 'glutenFree'));
 // const dairyFreeRestaurantsRef = query(ref(db, 'restaurants'), equalTo('yes', 'dairyFree'), equalTo('partially', 'dairyFree'));
+const dairyFreeRestaurantsRef = query(ref(db, 'restaurants'), equalTo('yes', 'dairyFree'));
 
 // General function to load restaurant data given a reference
 function listRestaurants(ref) {
+    console.log('inside listRestaurants');
     document.getElementById("searchResult").innerHTML = '';
     onValue(ref, (snapshot) => {
+        console.log('inside onValue');
         snapshot.forEach((childSnapshot) => {
+            console.log('inside snapshot');
             // Create all elements of a restaurant listing
             // Create (first) row that contains all other elements
             const _rowOne = document.createElement('div');
