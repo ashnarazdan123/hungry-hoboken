@@ -9,7 +9,7 @@ function initMap() {
     // receives the initial focus when tab is pressed. Use arrow keys to
     // move between markers; press tab again to cycle through the map controls.
     const restaurants = [
-        [{ lat: 40.7388684, lng: -74.0324493 }, "Acai Ya Later"],
+        [{ lat: 40.73899038105537, lng: -74.03025523775096 }, "Acai Ya Later"],
         [{ lat: 40.7504972, lng: -74.0294172 }, "Alfalfa"],
         [{ lat: 40.742698, lng: -74.0312588 }, "Bareburger"],
         [{ lat: 40.7414345, lng: -74.0316724 }, "Ben & Jerry's"],
