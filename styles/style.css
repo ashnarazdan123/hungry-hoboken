@@ -1,13 +1,78 @@
+/* Element selectors */
 h1 {
     color: #a32638
 }
 
+/* Class selectors */
 .food-size img {
     width: auto;
     height: 300px;
     max-height: 300px;
 }
+img.profile {
+  height: 100%;
+  width: 100%;
+}
+p.name {
+  text-align: center;
+}
+button.category {
+  background-color: #a32638;
+  border-color: #a32638;
+}
+/* Restaurant listing */
+div.logoDiv {
+  background-color:grey;
+  border-radius: 10px;
+  display: flex;
+  /* align-self: center; */
+}
+img.logo {
+  height: 90%;
+  width: 90%;
+  margin: auto;
+  display: block;
+  border-radius: 10px;
+  /* align-content: center; */
+}
+p.restName {
+  font-size: 50px;
+}
+p.category {
+  font-size: 20px;
+  color: gray;
+}
+img.ratingImg {
+  /* height: 100%; */
+  width: 130%;
+}
+p.rating {
+  font-size: 35px;
+}
+p.price {
+  font-size: 35px;
+  color: green;
+}
+p.yes {
+  color: white;
+  background-color: green;
+  text-align: center;
+  border-radius: 5px;
+}
+p.partially {
+  color: white;
+  background-color: orange;
+  text-align: center;
+  border-radius: 5px;
+}
+p.no {
+  color: white;
+  background-color: red;
+  text-align: center;
+  border-radius: 5px;
+}
 
+/* ID selectors */
 /* Set the size of the div element that contains the map */
 #map {
     height: 800px;
